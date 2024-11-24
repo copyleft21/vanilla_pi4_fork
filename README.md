@@ -1,8 +1,10 @@
 ### Device specific configuration to build AOSP Android 14 for Raspberry Pi 4 and Raspberry Pi 5.
 
 ***
-
-
+export REPO=$(mktemp /tmp/repo.XXXXXXXXX)
+curl -o ${REPO} https://storage.googleapis.com/git-repo-downloads/repo
+gpg --recv-keys 8BB9AD793E8E6153AF0F9A4416530D5E920F5C65
+curl -s https://storage.googleapis.com/git-repo-downloads/repo.asc | gpg --verify - ${REPO} && install -m 755 ${REPO} ~/bin/repo
 1. Establish [Android build environment](https://source.android.com/setup/initializing) and install [repo](https://source.android.com/docs/setup/develop#installing-repo).
 
 2. Install additional packages:
